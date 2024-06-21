@@ -1,0 +1,34 @@
+[gd_scene load_steps=6 format=3 uid="uid://cosnjoo6fnih3"]
+
+[ext_resource type="Script" path="res://scripts/tortoise.gd" id="1_1ghds"]
+[ext_resource type="Texture2D" uid="uid://x8mcj64y8k8f" path="res://assets/Tortoise.png" id="1_5pjbt"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qgoxb"]
+atlas = ExtResource("1_5pjbt")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_55qh5"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qgoxb")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_uv3do"]
+size = Vector2(34, 23)
+
+[node name="tortoise" type="CharacterBody2D"]
+input_pickable = true
+script = ExtResource("1_1ghds")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(5, -11)
+sprite_frames = SubResource("SpriteFrames_55qh5")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(3, 1.5)
+shape = SubResource("RectangleShape2D_uv3do")

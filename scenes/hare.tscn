@@ -1,0 +1,34 @@
+[gd_scene load_steps=6 format=3 uid="uid://ckqm2rlc2x6qb"]
+
+[ext_resource type="Script" path="res://scripts/hare.gd" id="1_65yc7"]
+[ext_resource type="Texture2D" uid="uid://cv32x1qhhkebx" path="res://assets/Hare.png" id="2_4sosm"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xxi7x"]
+atlas = ExtResource("2_4sosm")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_qsslj"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xxi7x")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_yy0hr"]
+radius = 13.0
+height = 42.0
+
+[node name="Hare" type="CharacterBody2D"]
+input_pickable = true
+script = ExtResource("1_65yc7")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_qsslj")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 8)
+shape = SubResource("CapsuleShape2D_yy0hr")
